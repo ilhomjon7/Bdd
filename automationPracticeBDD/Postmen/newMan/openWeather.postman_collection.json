@@ -1,0 +1,463 @@
+{
+	"info": {
+		"_postman_id": "508ea0dc-2992-4ac7-a38b-bdd609a2e6db",
+		"name": "openWeather",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get current weather by city name by Json",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fdf33eaa-43dc-4ffa-86c4-6265cc97aaf2",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"check the city name\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Pittsburgh\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{baseurl}}/data/2.5/weather?units=imperial&q=Pittsburgh,US&appid={{appid}}",
+					"protocol": "http",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "units",
+							"value": "imperial"
+						},
+						{
+							"key": "q",
+							"value": "Pittsburgh,US"
+						},
+						{
+							"key": "appid",
+							"value": "{{appid}}"
+						},
+						{
+							"key": "mode",
+							"value": "xml",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get current weather by city name by XML",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/weather?q=Pittsburgh,US&appid=dc49b0dd19d39136ca639d2c94cc42b5&units=imperial&mode=xml",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Pittsburgh,US"
+						},
+						{
+							"key": "appid",
+							"value": "dc49b0dd19d39136ca639d2c94cc42b5"
+						},
+						{
+							"key": "units",
+							"value": "imperial"
+						},
+						{
+							"key": "mode",
+							"value": "xml"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get current weather by ZIPcode  in XML",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0c620883-9ec7-455d-b49b-c39f69cd69ac",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"check the zip codee\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Pittsburgh\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{baseurl}}/data/2.5/weather?mode=xml&zip=15222,us&appid={{appid}}",
+					"protocol": "http",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "mode",
+							"value": "xml"
+						},
+						{
+							"key": "zip",
+							"value": "15222,us"
+						},
+						{
+							"key": "appid",
+							"value": "{{appid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get current weather by   coordinates in Json",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0c620883-9ec7-455d-b49b-c39f69cd69ac",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"check the zip codee\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Tysons Corner\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{baseurl}}/data/2.5/weather?lat=38.919476&lon=-77.231154&mode=json&appid={{appid}}",
+					"protocol": "http",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "38.919476"
+						},
+						{
+							"key": "lon",
+							"value": "-77.231154"
+						},
+						{
+							"key": "mode",
+							"value": "json"
+						},
+						{
+							"key": "appid",
+							"value": "{{appid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create an alert",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "79e13b70-ab32-4b03-9ab0-1ad5a4ebbc33",
+						"exec": [
+							"\r",
+							"\r",
+							"var jsonData;\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"  pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"verify temperature is 299\", function () {\r",
+							"  jsonData = pm.response.json();\r",
+							"  pm.expect(jsonData.conditions[0].amount).to.eql(299);\r",
+							"});\r",
+							"pm.test(\"verify coordinates are correct\", function () {\r",
+							"  jsonData = pm.response.json();\r",
+							"  pm.expect(jsonData.area[0].coordinates[0]).to.eql(53);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"verify coordinates are correct\", function () {\r",
+							"  jsonData = pm.response.json();\r",
+							"  pm.expect(jsonData.area[0].coordinates[1]).to.eql(37);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"// console.log(jsonData.conditions[0].amount);\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.globals.set(\"triggerId\", jsonData._id);\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"time_period\":{\r\n      \"start\":{\r\n         \"expression\":\"after\",\r\n         \"amount\":132000000\r\n      },\r\n      \"end\":{\r\n         \"expression\":\"after\",\r\n         \"amount\":432000000\r\n      }\r\n   },\r\n   \"conditions\":[\r\n      {\r\n         \"name\":\"temp\",\r\n         \"expression\":\"$gt\",\r\n         \"amount\":299\r\n      }\r\n   ],\r\n   \"area\":[\r\n      {\r\n         \"type\":\"Point\",\r\n         \"coordinates\":[\r\n            53,\r\n            37\r\n         ]\r\n      }\r\n   ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{baseurl}}/data/3.0/triggers?appid={{appid}}",
+					"protocol": "http",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"data",
+						"3.0",
+						"triggers"
+					],
+					"query": [
+						{
+							"key": "appid",
+							"value": "{{appid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get an alert",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "73fc4e83-e7e6-49d7-a776-2120d81c6c33",
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{baseurl}}/data/3.0/triggers/{{triggerId}}?appid={{appid}}",
+					"protocol": "http",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"data",
+						"3.0",
+						"triggers",
+						"{{triggerId}}"
+					],
+					"query": [
+						{
+							"key": "appid",
+							"value": "{{appid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updata an alert",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"__v\": 0,\r\n    \"_id\": \"5daf386f71f5860010f97a4e\",\r\n    \"alerts\": {},\r\n    \"area\": [\r\n        {\r\n            \"type\": \"Point\",\r\n            \"_id\": \"5daf386f71f5860010f97a4f\",\r\n            \"coordinates\": [\r\n                53,\r\n                37\r\n            ]\r\n        }\r\n    ],\r\n    \"conditions\": [\r\n        {\r\n            \"name\": \"temp\",\r\n            \"expression\": \"$gt\",\r\n            \"amount\": 230,\r\n            \"_id\": \"5daf386f71f5860010f97a50\"\r\n        }\r\n    ],\r\n    \"time_period\": {\r\n        \"end\": {\r\n            \"expression\": \"after\",\r\n            \"amount\": 432000000\r\n        },\r\n        \"start\": {\r\n            \"expression\": \"after\",\r\n            \"amount\": 132000000\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{baseurl}}/data/3.0/triggers/5daf386f71f5860010f97a4e?appid={{appid}}",
+					"protocol": "http",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"data",
+						"3.0",
+						"triggers",
+						"5daf386f71f5860010f97a4e"
+					],
+					"query": [
+						{
+							"key": "appid",
+							"value": "{{appid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delet an alert",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{baseurl}}/data/3.0/triggers/5daf386f71f5860010f97a4e?appid={{appid}}",
+					"protocol": "http",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"data",
+						"3.0",
+						"triggers",
+						"5daf386f71f5860010f97a4e"
+					],
+					"query": [
+						{
+							"key": "appid",
+							"value": "{{appid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "demon data files",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{baseurl}}/data/2.5/weather?mode=xml&zip={{zipcode}},{{country}}&appid={{appid}}",
+					"protocol": "http",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "mode",
+							"value": "xml"
+						},
+						{
+							"key": "zip",
+							"value": "{{zipcode}},{{country}}"
+						},
+						{
+							"key": "appid",
+							"value": "{{appid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get customer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search customer by name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
