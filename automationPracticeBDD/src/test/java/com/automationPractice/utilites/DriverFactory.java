@@ -1,30 +1,31 @@
 
 package com.automationPractice.utilites;
 import java.util.concurrent.TimeUnit;
+
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
+
+
 import io.github.bonigarcia.wdm.WebDriverManager;
-public class DriverFactory {
+final class DriverFactory {
+	private  static Logger logger = Logger.getLogger(DriverFactory.class);
     
-    protected static WebDriver driver;
-    
-    protected static DriverHelper driverHelper;
-    static{
-    	if (driver == null) {
-    		driver = getDriver(AppProperties.BROWSER_TYPE);
-    		driverHelper = new DriverHelper(driver);
-    		
-    	}
+    private static WebDriver driver;
+     
+    static WebDriver getDriver() {
+    	if (driver ==null) driver = getActiveDriver();
+   return driver;
     }
-    
-    protected synchronized static WebDriver getDriver ( String browserType ) {
+    private synchronized static WebDriver getActiveDriver () {
+    	String browserType = AppProperties.BROWSER_TYPE;
         switch ( browserType ) {
             case "chrome":
                 driver = getChromeDriver();
-//              driver.manage().window().maximize();
+           
                 break;
             case "chrome-headless":
                 driver = getHeadlessChromeDriver();
@@ -37,9 +38,7 @@ public class DriverFactory {
                 break;
         }
         
-        driver.manage().deleteAllCookies();
-        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+     logger.info("Driver type set to " + browserType);
         return  driver;
     }
     

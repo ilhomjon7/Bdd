@@ -15,7 +15,7 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import static org.junit.Assert.*;
-public final class DriverHelper {
+public  class DriverHelper {
     
     private String mainWindowhandle;
     private WebDriver driver;
@@ -53,6 +53,11 @@ public final class DriverHelper {
     public List<WebElement> getElements ( By by, int timeOutInSeconds ) {
         waitForElementVisibility(by, timeOutInSeconds);
         return driver.findElements(by);
+    }
+    
+    public void clickByLinktext ( String linkText, int timeOutInSeconds ) {
+        click(By.linkText(linkText), timeOutInSeconds);
+
     }
     
     public void click ( By by, int timeOutInSeconds ) {
